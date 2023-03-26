@@ -1,0 +1,67 @@
+<!DOCTYPE html.> 
+<html lang ="en" dir="ltr">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport"content="width=device-wode,initial-scale=1">
+        <meta name="author"content="Shiyu Li">
+        <meta name="description"content="Typing game">
+        <meta name="keywords"content="html,css,web,web developmet,seo">
+        <title>Typing Kongfu</title>
+        <link 
+            rel="shortcut icon" 
+            href="./assets/image/icon.png" 
+            type="picture/x-icon"
+        >
+        <link rel="stylesheet" href="./assets/style/index.css" media="all">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" 
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer" 
+        />
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+        <script src="./assets/script/index.js" type="module"></script>
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <dialog>
+                    <h2>Challenge yourslef</h2>
+                    <p>Defend your reputation</p>
+                    <p>90 seconds! type as many words as you see on the screen.</p>
+                    <p>Press "Start" to play. Enjoy :)</p>
+                    <button class="start">Start</button>
+                </dialog>
+                <div class="time-mark">
+                    <div class="time-box">
+                        <p class="time-display">Time: <i class="fa-solid fa-clock"></i> --</p>
+                    </div>
+                    <div class="points-box">
+                        <p class="points-display">Mark: <i class="fa-solid fa-circle-check"></i> --</p>
+                    </div>
+                </div>
+
+                <div class="game-area">
+                    <div class="light">
+                        <i class="fa-solid fa-traffic-light"></i>
+                        <div class="red"></div>
+                        <div class="amber"></div>
+                        <div class="green"></div>
+                    </div>
+                    <div class="word-box">
+                        <p><i class="fa-solid fa-chevron-right fa-flip-horizontal left"></i><span  class="word-display"></span><i class="fa-solid fa-chevron-right right" style="text-align: end;"></i></p>
+                    </div>
+                    <form>
+                        <input type="text" placeholder="enter word" class="word-input">
+                    </form>
+                    <div class="buttons-box">
+                        <button class="start-btn"> Play now ! </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html> 

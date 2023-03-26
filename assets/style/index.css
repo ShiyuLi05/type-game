@@ -1,0 +1,180 @@
+@import url(./reset.css);
+
+body {
+    background: 
+        radial-gradient(ellipse farthest-side at 76% 77%, 
+        rgba(245, 228, 212, 0.25) 4%, 
+        rgba(255, 255, 255, 0) calc(4% + 1px)), 
+        radial-gradient(circle at 76% 40%, 
+        #fef6ec 4%, 
+        rgba(255, 255, 255, 0) 4.18%), 
+        linear-gradient(135deg, #ff0000 0%, #000036 100%), 
+        radial-gradient(ellipse at 28% 0%, #ffcfac 0%, rgba(98, 149, 144, 0.5) 100%), 
+        linear-gradient(180deg, #cd6e8a 0%, #f5eab0 69%, #d6c8a2 70%, #a2758d 100%); 
+        background-blend-mode: normal, normal, screen, overlay, normal;
+        color: #2F4858;
+}
+
+.container {
+    margin-inline: auto;
+    height: 100vh;
+    place-items:center center;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 0.25fr 1fr;
+}
+
+/*          Game Area                        */
+.game-area {
+    grid-area: 1 / 2 / 4 / 3;
+    height: 80%;
+    /*background-color: #cd6e8a;*/
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.6fr 0.25fr 0.3fr 0.3fr;
+    place-items:center;
+    padding: 2rem;
+    width: 60%;
+} 
+.light {
+    grid-area: 1 / 1 / 2 / 2;
+    font-size: 10rem;
+    position: relative;
+    margin: 2rem;
+}
+.red {
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    background-color: #cc3232;
+    position:absolute;
+    top: 12%;
+    left: 34%;
+    visibility: hidden;
+}
+.red.active {
+    visibility: visible;
+}
+.amber {
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    left: 34%;
+    top:37%;
+    background-color: #e7b416;
+    visibility: hidden;
+}
+.amber.active {
+    visibility: visible;
+}
+.green {
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    left: 34%;
+    top:62%;
+    background-color: 	#2dc937;
+    visibility: hidden;
+}
+.green.active {
+    visibility: visible;
+}
+.word-box {
+    grid-area: 2 / 1 / 3 / 2;
+    font-size: 2rem;
+    font-weight: bolder;
+    width: 100%;
+    align-items: center;
+}
+.word-box p {
+    width: 10.15rem;
+    display: grid;
+    grid-template-columns: 0.1fr 1fr 0.1fr;
+    place-items:center center;
+    width: 100%;
+}
+form {
+    grid-area: 3 / 1 / 4 / 2;
+    text-align: center;
+}
+input[type='text']{
+    margin: auto;
+    width: 80%;
+    font-size: 2rem;
+    text-align: center;
+    border: none;
+    border-radius: 0.6rem;
+    padding: 1rem 0;
+}
+/*          Time & Mark                       */
+.time-mark {
+    font-size: 1.5rem;
+    line-height: 50%;
+    width: 70%;
+
+}
+.time-box {
+    margin-bottom: 1rem;
+}
+ 
+/*          Button                          */
+.buttons-box {
+    padding: 0 1.2rem;
+    width: 100%;
+    text-align:center; 
+    align-self: flex-start;
+}
+button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+button.start-btn {
+    font-weight: bold;
+    color: #382b22;
+    text-transform: uppercase;
+    padding: 1rem 1.8rem;
+    background: #fff0f0;
+    border: 2px solid #b18597;
+    border-radius: 0.6rem;
+    transform-style: preserve-3d;
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+button.start-btn::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f9c4d2;
+    border-radius: inherit;
+    box-shadow: 0 0 0 2px #b18597, 0 0.55em 0 0 #ffe3e2;
+    transform: translate3d(0, 0.75em, -1em);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+button.start-btn:hover {
+    background: #ffe9e9;
+    transform: translate(0, 0.25em);
+}
+
+button.start-btn:hover::before {
+    box-shadow: 0 0 0 2px #b18597, 0 0.35em 0 0 #ffe3e2;
+    transform: translate3d(0, 0.5em, -1em);
+}
