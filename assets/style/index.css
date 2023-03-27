@@ -170,4 +170,13 @@ dialog {
     box-shadow:  15px 15px 46px #846874,
                 -15px -15px 46px #cea2b6;
 }
+.close {
+    font-size:medium;
+    color: #3a3a40;  
+    font-weight: lighter;
+    position:absolute;
+    bottom: 5%;  
+    left: 0;
+    right: 0;
+}
 

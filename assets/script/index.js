@@ -10,8 +10,9 @@ function randomizer(array) {
 }
 // Ready Set Go Timer Function
 function readySetGo(countdown) {
-    wordDisplay.style.color = '#C44F69';
     const countdownTime = setInterval(() =>  {
+        countDownMusic.play();
+        wordDisplay.style.color = '#C44F69';
         wordDisplay.innerText = --countdown;
 
         if(countdown == 0) {
@@ -39,6 +40,7 @@ function timer(timeLeft) {
             startBtn.innerText = 'Play Again';
             wordInput.value = '';
             startBtn.disabled = false;
+            createScore();
         }
     }, 1000);
 }
@@ -50,7 +52,7 @@ function validate(words) {
             const index = words.indexOf(randomWord);
             words.splice(index, 1);
             wordInput.style.border = 'solid #2dc937';
-            pointsDisplay.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${points += 1}`;
+            pointsDisplay.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${points += 1} points`;
             wordInput.value = '';
             wordDisplay.innerText = randomWord = randomizer(words);
             light.style.cssText = 'background-color:#2dc937; top:62%;'
@@ -66,6 +68,7 @@ function validate(words) {
 
 // Start Game Function
 function startGame() {
+    music.play();
     wordDisplay.style.color = '#2F4858';
     timer(timeLeft);
     startBtn.disabled = true;
@@ -100,6 +103,8 @@ const dialog = select('dialog');
 const light = select('.red');
 const music = new Audio('./assets/audio/music.mp3');
 music.type = 'audio.mp3';
+const countDownMusic = new Audio('./assets/audio/countdown.mp3');
+countDownMusic.type = 'audio.mp3';
 
 
 // GAME SETUP
@@ -117,7 +122,6 @@ onEvent('click', dialog, function() {
 });
 
 onEvent('click', startBtn, () => {
-    music.play();
     readySetGo(countdown);
 
     setTimeout(() => {
