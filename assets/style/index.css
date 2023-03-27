@@ -47,42 +47,8 @@ body {
     border-radius: 50%;
     width: 2rem;
     height: 2rem;
-    background-color: #cc3232;
     position:absolute;
-    top: 12%;
     left: 34%;
-    visibility: hidden;
-}
-.red.active {
-    visibility: visible;
-}
-.amber {
-    border: none;
-    border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
-    position: absolute;
-    left: 34%;
-    top:37%;
-    background-color: #e7b416;
-    visibility: hidden;
-}
-.amber.active {
-    visibility: visible;
-}
-.green {
-    border: none;
-    border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
-    position: absolute;
-    left: 34%;
-    top:62%;
-    background-color: 	#2dc937;
-    visibility: hidden;
-}
-.green.active {
-    visibility: visible;
 }
 .word-box {
     grid-area: 2 / 1 / 3 / 2;
@@ -173,9 +139,35 @@ button.start-btn:hover {
     background: #ffe9e9;
     transform: translate(0, 0.25em);
 }
-/*
+
 button.start-btn:hover::before {
     box-shadow: 0 0 0 2px #b18597, 0 0.35em 0 0 #ffe3e2;
     transform: translate3d(0, 0.5em, -1em);
 }
-*/
+button.start-btn:active {
+    background: #ffe9e9;
+    transform: translate(0em, 0.75em);
+}
+
+button.start-btn:active::before {
+    box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
+    transform: translate3d(0, 0, -1em);
+}
+
+/*          DILOG                         */
+dialog {
+    text-align: center;
+    margin: auto;
+    padding:  95px 3rem;
+    font-size: 2rem;
+    font-weight: bolder;
+    height: 550px;
+    width: 710px;
+    overflow: hidden;
+    background-color: transparent;
+    border-radius: 90px;
+    background: linear-gradient(145deg, #b58e9f, #987886);
+    box-shadow:  15px 15px 46px #846874,
+                -15px -15px 46px #cea2b6;
+}
+
