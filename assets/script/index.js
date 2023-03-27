@@ -29,11 +29,13 @@ function timer(timeLeft) {
         timeDisplay.innerHTML = `<i class="fa-solid fa-clock"></i> ${--timeLeft} seconds`;
 
         if(timeLeft == 0) {
+            music.pause();
             wordDisplay.innerText = 'Time\'s up';
             wordDisplay.style.color = '#C44F69';
             startBtn.disabled = true;
             wordInput.disabled = true;
             clearInterval(timer);
+            startBtn.style.visibility = 'visible';
             startBtn.innerText = 'Play Again';
             wordInput.value = '';
             startBtn.disabled = false;
@@ -69,6 +71,7 @@ function startGame() {
     startBtn.disabled = true;
     wordInput.disabled = false;
     wordInput.focus();
+    startBtn.style.visibility = 'hidden';
 }
 
 const words = [
@@ -95,7 +98,8 @@ const startBtn = select('.start-btn');
 const wordInput = select('.word-input');
 const dialog = select('dialog');
 const light = select('.red');
-
+const music = new Audio('./assets/audio/music.mp3');
+music.type = 'audio.mp3';
 
 
 // GAME SETUP
@@ -113,6 +117,7 @@ onEvent('click', dialog, function() {
 });
 
 onEvent('click', startBtn, () => {
+    music.play();
     readySetGo(countdown);
 
     setTimeout(() => {
@@ -120,8 +125,3 @@ onEvent('click', startBtn, () => {
         validate(words);
     }, 4000);
 });
-
-/*onEvent('click', restartBtn, () => {
-    window.location.reload();
-    wordInput.value = '';
-});*/
