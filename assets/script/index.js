@@ -88,7 +88,7 @@ function saveData() {
         score: points,
         date: currentDate
     };
-
+    console.log(stats);
     const prevGames = JSON.parse(localStorage.getItem('Games'));
     prevGames.push(stats);
 
