@@ -91,7 +91,7 @@ function saveData() {
     console.log(stats);
     const prevGames = JSON.parse(localStorage.getItem('Games'));
     prevGames.push(stats);
-
+    console.log(prevGames);
     localStorage.setItem('Games', JSON.stringify(prevGames));
 }
 
