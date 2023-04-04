@@ -41,7 +41,6 @@ function timer(timeLeft) {
             pointsDisplay.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${points = 0} points`;
             clearInterval(timer);
             wordInput.value = '';   
-            prepStorage();
             getData();  
             setTimeout(() => {
                 scoreCanvas.style.display = 'flex';
@@ -164,6 +163,7 @@ let randomWord = randomizer(words);
 wordInput.value = '';
 wordInput.disabled = true;
 dialogInfo.showModal();
+prepStorage();
 
 // EVENT LISTENERS
 onEvent('click', dialogInfo, function() {
