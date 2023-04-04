@@ -1,6 +1,7 @@
 'use strict';
 
 import {onEvent, select} from './utils.js';
+
 // Getting Random Words Function
 function randomizer(array) {
     for(let i = 0; i <= array.length; i++) {
@@ -14,8 +15,8 @@ function readySetGo(countdown) {
         countDownMusic.play();
         wordDisplay.style.color = '#C44F69';
         wordDisplay.innerText = --countdown;
-
         if(countdown == 0) {
+            wordDisplay.style.color = '#2F4858';
             wordDisplay.innerText = randomWord;
             clearInterval(countdownTime);
         }
@@ -28,19 +29,27 @@ function readySetGo(countdown) {
 function timer(timeLeft) {
     const timer = setInterval(() => {
         timeDisplay.innerHTML = `<i class="fa-solid fa-clock"></i> ${--timeLeft} seconds`;
-
         if(timeLeft == 0) {
             music.pause();
             wordDisplay.innerText = 'Time\'s up';
             wordDisplay.style.color = '#C44F69';
             startBtn.disabled = true;
             wordInput.disabled = true;
+            light.style.cssText = 'background-color:transparent'
+            wordInput.style.border = 'solid transparent';
+            saveData();
+            pointsDisplay.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${points = 0} points`;
             clearInterval(timer);
-            startBtn.style.visibility = 'visible';
-            startBtn.innerText = 'Play Again';
-            wordInput.value = '';
-            startBtn.disabled = false;
-            createScore();
+            wordInput.value = '';   
+            prepStorage();
+            getData();  
+            setTimeout(() => {
+                scoreCanvas.style.display = 'flex';
+                container.style.display = 'none';
+                startBtn.style.visibility = 'visible';
+                startBtn.innerText = 'Play Again';
+                startBtn.disabled = false;
+            }, 800);
         }
     }, 1000);
 }
@@ -66,10 +75,46 @@ function validate(words) {
     });
 }
 
+function prepStorage() {
+    if(localStorage.getItem('Games') == null) {
+        localStorage.setItem('Games', '[]');
+    }
+}
+
+// Save Result Function
+function saveData() {
+    const currentDate = new Date().toJSON().slice(0, 10);
+    const stats = {
+        score: points,
+        date: currentDate
+    };
+
+    const prevGames = JSON.parse(localStorage.getItem('Games'));
+    prevGames.push(stats);
+
+    localStorage.setItem('Games', JSON.stringify(prevGames));
+}
+
+function getData() {
+    const AGames = JSON.parse(localStorage.getItem('Games'));
+    let index = 0;
+    AGames.sort((a, b)=> b.score > a.score ? 1 : b.score < a.score ? -1 : 0);
+
+    for(let game of AGames) {
+        scoreTable.innerHTML += `
+        <tr>
+            <td>#${++index}</td>
+            <td>${game.score}</td>
+            <td>${game.date}</td>
+        </tr>
+    `;
+    }
+}
+
 // Start Game Function
 function startGame() {
-    music.play();
     wordDisplay.style.color = '#2F4858';
+    music.play();
     timer(timeLeft);
     startBtn.disabled = true;
     wordInput.disabled = false;
@@ -99,8 +144,12 @@ const timeDisplay = select('.time-display');
 const pointsDisplay = select('.points-display');
 const startBtn = select('.start-btn');
 const wordInput = select('.word-input');
-const dialog = select('dialog');
+const dialogInfo = select('.inf');
 const light = select('.red');
+const scoreCanvas = select('.score-canvas');
+const scoreTable = select('table');
+const container = select('.container');
+const Xbtn = select('.close-btn');
 const music = new Audio('./assets/audio/music.mp3');
 music.type = 'audio.mp3';
 const countDownMusic = new Audio('./assets/audio/countdown.mp3');
@@ -114,18 +163,25 @@ let points = 0;
 let randomWord = randomizer(words);
 wordInput.value = '';
 wordInput.disabled = true;
-dialog.showModal();
+dialogInfo.showModal();
 
 // EVENT LISTENERS
-onEvent('click', dialog, function() {
-    dialog.close();
+onEvent('click', dialogInfo, function() {
+    dialogInfo.close();
 });
 
 onEvent('click', startBtn, () => {
     readySetGo(countdown);
-
     setTimeout(() => {
         startGame();
         validate(words);
     }, 4000);
 });
+
+onEvent('click', Xbtn, () => {
+    scoreCanvas.style.display = 'none';
+    container.style.display = 'grid';
+})
+
+//localStorage.clear();
+
