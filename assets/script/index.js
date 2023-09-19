@@ -182,6 +182,3 @@ onEvent('click', Xbtn, () => {
     scoreCanvas.style.display = 'none';
     container.style.display = 'grid';
 })
-
-//localStorage.clear();
-
